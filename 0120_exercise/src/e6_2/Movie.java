@@ -1,17 +1,21 @@
 package e6_2;
 
 public class Movie {
-	private int id;
-	private String title;
-	private String director;
-	private String genre;
-	private int runningTime;
+	private int id = 0;
+	private String title = "title";
+	private String director = "director";
+	private String genre = "genre";
+	private int runningTime = 0;
 	
 	public Movie() {
 	}
 	
 	public Movie(int id, String title, String director, String genre, int runningTime) {
-		
+		setId(id);
+		setTitle(title);
+		setDirector(director);
+		setGenre(genre);
+		setRunningTime(runningTime);
 	};
 	
 	public int getId() {
@@ -44,6 +48,14 @@ public class Movie {
 	public void setRunningTime(int i) {
 		this.runningTime = i;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + getId() + ", title=" + getTitle() + ", director=" + getDirector() + ", genre=" + getGenre() + ", runningTime="
+				+ getRunningTime() + "]";
+	}
+	
+	
 
 }
 

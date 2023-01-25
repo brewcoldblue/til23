@@ -4,11 +4,14 @@ public class SeriesMovie extends Movie {
 	private int seriesNum;
 	private String episodes;
 	
-	public SeriesMovie() {
-		
+	private SeriesMovie() {
+		super();
 	}
-	public SeriesMovie(int id, String title, String director, String genre, int runningTime) {
-		
+	public SeriesMovie(int id, String title, String director, String genre, int runningTime, int seriesNum, String episodes) {
+		super(id, title, director, genre, runningTime);
+
+		this.seriesNum=seriesNum;
+		this.episodes=episodes;
 	}
 	public int getSeriesNum() {
 		return seriesNum;
