@@ -1,4 +1,4 @@
-# 2023Practice File Structure
+# File Structure
 
 - `MMDDL` : MM월 DD일 Live Code
 - `MMDDP` : MM월 DD일 실습 및 과제
