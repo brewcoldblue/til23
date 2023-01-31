@@ -1,32 +1,47 @@
 package test01_byte_stream;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Test1 {
 	public static void main(String[] args) throws IOException {
+		// byte stream
+		// => ì´ë¯¸ì§€
+		
 		FileInputStream in = null;
 		FileOutputStream out = null;
 		
-	//try ~ finally »ç¿ëÇØ¼­, µ¥ÀÌÅÍ Á¤¸®
+		// ì—¬ê¸°ì„œëŠ” ì˜ˆì™¸ ì²˜ë¦¬ëŠ” ë”°ë¡œ í•˜ì§€ x
+		// try ~ finally ì™œ ì“¸ê¹Œìš”?
 		try {
 			in = new FileInputStream("newjeans.jpg");
 			out = new FileOutputStream("newjeans-copy.jpg");
 			
-			int b; // byte -> int·Î ÀúÀåÇØµµ µÊ (¹¬½ÃÀû Çü º¯È¯)
+			int b; // byteë¥¼ intí˜•ìœ¼ë¡œ ì €ì¥í•´ë„ ë¨
+			
 			while((b = in.read()) != -1) {
-				//´õÀÌ»ó ÀĞ¾î¿Ã µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é ¹ÙÀÌÆ®°¡ -1À» ¸®ÅÏÇÑ´Ù.
-				//ÇÒ´çÇÑ ÈÄ ¹Ù·Î ºñ±³
 				out.write(b);
 			}
+			System.out.println("ë³µì‚¬ë¥¼ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.");
 			
-			System.out.println("º¹»ç¸¦ ¿Ï·áÇß½À´Ï´Ù.");
 		} finally {
-			//ÀÔÃâ·Â ½ºÆ®¸²À» ´İ½À´Ï´Ù.
-			if(in != null) in.close();
-			if(out != null) out.close();
-			System.out.println("¸ğµç ¸®¼Ò½º¸¦ ´İ°í Á¾·áÇÕ´Ï´Ù.");
+			// ì…ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ì„ ë‹«ì•„ì¤€ë‹¤.
+			if(in != null)
+				in.close();
+			if(out != null)
+				out.close();
+			
+			System.out.println("ëª¨ë“  ë¦¬ì†ŒìŠ¤ë¥¼ ë‹«ê³  ì¢…ë£Œí•©ë‹ˆë‹¤.");
+			
 		}
 	}
 }
+
+
+
+
+
+
+

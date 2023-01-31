@@ -9,45 +9,45 @@ import java.io.IOException;
 
 public class Test1 {
 	public static void main(String[] args) throws IOException {
-		// BufferedReader & BufferedWriter,
-		// FileReader & FileWriter ¼Óµµ Å×½ºÆ®
-		test1("    FileReader & FileWriter    ");
-		test2("BufferedReader & BufferedWriter");
+		// BufferedReader & BufferedWriterê°€ ë”ë¹ ë¥¸ì§€?
 		
-		/*
-		 *
-		 *         FileReader & FileWriter     -        32509500 ns. 
-		 *     BufferedReader & BufferedWriter -         3470800 ns. 
-		 *     º¸Åë ¾à 8-10¹è Á¤µµÀÇ ¼Óµµ Â÷ÀÌ°¡ ÀÖÀ½. ¹öÆÛ°¡ ÈÎ¾À ºü¸£´Ù.
-		 */
+		// FileReader & FileWriter
+		test1("    FileReader & FileWriter    ");
+		
+		// BufferedReader & BufferedWriter
+		test2("BufferedReader & BufferedWriter");
 	}
+	
 	public static void test1(String testname) throws IOException {
 		try(FileReader reader = new FileReader("big_input.txt");
 			FileWriter writer = new FileWriter("big_input-copy2.txt")){
 			long start = System.nanoTime();
 			int c;
-			while((c = reader.read()) != -1 ) {
-				writer.write(c); //¹®ÀÚ¿­ ÇÏ³ª¾¿ ÀĞ¾î¿Í¼­ ÇÏ³ª¾¿ ¾²´Â
+			while((c = reader.read())!= -1 ) {
+				writer.write(c);
 			}
 			long end = System.nanoTime();
-			System.out.printf("%s - %15d ns. \n", testname, end-start);
+			System.out.printf("%s - %15d ns. \n", testname, end - start);
 		}
 	}
 	
-	//º¸Á¶½ºÆ®¸²À» »ç¿ëÇÑ °æ¿ì
+	// ë³´ì¡°ìŠ¤íŠ¸ë¦¼ ì‚¬ìš©í•˜ê¸°
 	public static void test2(String testname) throws IOException {
 		try(BufferedReader reader = new BufferedReader(new FileReader("big_input.txt"));
 			BufferedWriter writer = new BufferedWriter(new FileWriter("big_input-copy3.txt"))){
 			long start = System.nanoTime();
-			//BufferedReader, writer´Â ¹®ÀÚ¿­À» ÇÏ³ª¾¿ ÀĞ¾î¿À´Â°Ô ¾Æ´Ï¶ó,
-			//½ÇÁ¦·Î´Â ¶óÀÎ ´ÜÀ§·Î ÀĞ¾î¿Â´Ù.
-			String line;
-			while((line = reader.readLine()) != null ) {
-				writer.write(line); //¹®ÀÚ¿­À» ¹®Àå ´ÜÀ§·Î ÀĞ¾î¿Í¼­ ¾²´Â
-				writer.newLine(); //ÁÙ¹Ù²Ş
+			// buffered reader & writerëŠ” character í•˜ë‚˜ì”© ì½ì–´ì˜¤ëŠ” ê²Œ ì•„ë‹˜!
+			String line; // line ë‹¨ìœ„
+			while((line = reader.readLine()) != null) {
+				writer.write(line);
+				writer.newLine();
 			}
 			long end = System.nanoTime();
-			System.out.printf("%s - %15d ns. \n", testname, end-start);
+			System.out.printf("%s - %15d ns. \n", testname, end - start);
 		}
 	}
 }
+
+
+
+

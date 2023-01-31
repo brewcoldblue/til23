@@ -13,43 +13,51 @@ import java.util.Scanner;
 public class Test1 {
 	public static void main(String[] args) throws IOException {
 		// Scanner vs. BufferedReader
-		// big_input.txt¿¡¼­ ÇÑ ÁÙ¾¿ ÀÐ¾î¿Í¼­
-		// Á¤¼öÇüÀ¸·Î ¹Ù²Ù´Â ÀÛ¾÷À» ÇØº¸±â
-		test1("   Scanner    ");
-		test2("BufferedReader");
+		// - big_input.txtì—ì„œ í•œì¤„ì”© ì½ì–´ì™€ì„œ
+		// - ì •ìˆ˜í˜•ìœ¼ë¡œ ë°”ê¾¸ê¸°
 		
-		/*
-		 *       Scanner     -        27805600 ns. 
-		 *    BufferedReader -         2235200 ns. 
-		 *    ¹öÆÛµå°¡... 10¹è ÀÌ»ó ºü¸¨´Ï´Ù...
-		 */
+		// Scanner
+		test1("    Scanner   ");
+		
+		// BufferedReader
+		test2("BufferedReader");
 	}
+	
 	public static void test1(String testname) throws IOException {
 		try(Scanner sc = new Scanner(new FileInputStream("big_input.txt"))){
-			//½ºÄ³³Ê´Â ½ºÆ®¸²Àº ¾Æ´Ï´Ù.
 			long start = System.nanoTime();
 			while(sc.hasNext()) {
-				int num = sc.nextInt(); //nextInt·Î °¡Á®¿À¸é ÀÚµ¿À¸·Î Çüº¯È¯µÊ
+				int num = sc.nextInt();
 			}
 			long end = System.nanoTime();
 			System.out.printf("%s - %15d ns. \n", testname, end - start);
 		}
 	}
+	
 	public static void test2(String testname) throws IOException {
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("big_input.txt")))){
-			//º¸ÅëÀº bufferedReaderÀ» ¾²´Â »óÈ²Àº Ç¥ÁØÀÔÃâ·Â(System.im / System.out) »óÈ²ÀÌ°í,
-			//ÀÌ°Ô ¹Ù·Î inputstream°ú outputstream Å¸ÀÔÀ¸·Î µÇ¾î ÀÖ°í, ¹ÙÀÌÆ® ´ÜÀ§·Î µ¥ÀÌÅÍ°¡ ¿Ô´Ù°¬´ÙÇÔ
-			//Å°º¸µå¿¡¼­ ÀÔ·Â¹ÞÀ» ¶§´Â
-			//BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			//Scanner sc = new Scanner(System.in);
-			//ÀÌ·¸°Ô ¾²´Âµ¥, ÆÄÀÏ ÀÔÃâ·Â¿¡¼­´Â InputStreamReaderÀÌ ÇÊ¿ä¾øÀ» ¼ö ÀÖÀ½.
+			// í‘œì¤€ìž…ì¶œë ¥ -> ì•Œê³ ë¦¬ì¦˜ -> 
+			// System.in <= InputStream
+			// System.out <= OutputStream  
+			// ex) í‚¤ë³´ë“œì—ì„œ ìž…ë ¥ ë°›ì„ ë•Œ
+			// BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			// cf)
+			// Scanner sc = new Scanner(System.in));
+			// BufferdInputStream in = new BufferdInputStream(new FileInputStream());
 			long start = System.nanoTime();
-			String l; //brÀº line by lineÀ¸·Î ÀÐ¾î¿Â´Ù
+			
+			String l;
 			while((l = br.readLine()) != null) {
-				int num = Integer.parseInt(l); //brÀº Çüº¯È¯ ¾ÈÇØÁÖ´Ï±î °­Á¦·Î ÇØÁà¾ßÇÔ.
+				int num = Integer.parseInt(l);
 			}
+			
 			long end = System.nanoTime();
 			System.out.printf("%s - %15d ns. \n", testname, end - start);
 		}
 	}
+
 }
+
+
+
+

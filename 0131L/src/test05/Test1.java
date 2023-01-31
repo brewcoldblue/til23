@@ -4,14 +4,13 @@ import java.io.File;
 
 public class Test1 {
 	public static void main(String[] args) {
-		//File Å¬·¡½º
-		//ÆÄÀÏµµ µÇÁö¸¸, µğ·ºÅä¸®ÀÇ °´Ã¼µµ »ı¼ºÀÌ °¡´ÉÇÏ´Ù.
-		//ÀÌ°ÍÀú°Í ¸Ş¼Òµå¸¦ ¾µ ¼ö ÀÖ¾î¼­ Æí¸®.
+		// File í´ë˜ìŠ¤
+		// file ë˜ëŠ” directoryì˜ ê°ì²´ ìƒì„±
 		File f = new File("big_input.txt");
-		System.out.println("ÀÌ¸§: "+f.getName());
-		System.out.println("°æ·Î: "+f.getPath());
-		System.out.println("µğ·ºÅä¸®ÀÎ°¡?: "+f.isDirectory());
-		System.out.println("ÆÄÀÏÀÎ°¡?: "+f.isFile());
+		System.out.println("ì´ë¦„: "+f.getName());
+		System.out.println("ê²½ë¡œ: "+f.getPath());
+		System.out.println("ë””ë ‰í„°ë¦¬ ì—¬ë¶€: "+f.isDirectory());
+		System.out.println("íŒŒì¼ ì—¬ë¶€: "+f.isFile());
 		System.out.println(f.toString());
 		System.out.println(f);
 	}

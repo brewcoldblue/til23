@@ -1,4 +1,4 @@
-package test06;
+package test06_object_serialization;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,22 +13,24 @@ public class Test1 {
 		
 		try {
 			out = new ObjectOutputStream(new FileOutputStream(new File("object.dat")));
-			out.writeObject(new Person("È«½Â±æ", 20));
-			System.out.println("ÆÄÀÏ¿¡ °´Ã¼¸¦ Ãâ·ÂÇß½À´Ï´Ù.");
+			out.writeObject(new Person("í™ìŠ¹ê¸¸", 20));
+			System.out.println("ê°ì²´ë¥¼ íŒŒì¼ì— ì¶œë ¥í–ˆìŠµë‹ˆë‹¤.");
 			
 			in = new ObjectInputStream(new FileInputStream(new File("object.dat")));
-			Object obj = in.readObject(); //¿ÀºêÁ§Æ®·Î µé°í¿Â´Ù.
-			Person p = (Person) obj; //°¡Á®¿Â ¿ÀºêÁ§Æ®¸¦ personÀ¸·Î Çüº¯È¯
+			Object obj = in.readObject();
+			Person p = (Person) obj;
 			System.out.println(p);
-		} catch (Exception e) {
-			System.out.println("tryºí·ÏÀÇ ¿¹¿Ü¸¦ Ã³¸®Çß¾î¿ä.");
+		} catch(Exception e) {
+			System.out.println("try ë¸”ë¡ì˜ ì˜ˆì™¸ë¥¼ ì²˜ë¦¬í–ˆì–´ìš”.");
 			e.printStackTrace();
-		} finally { //try with resource°¡ ¾Æ´Ï¾î¼­ ´İ¾ÆÁà¾ß ÇÔ
+		} finally {
 			try {
-				if(out != null) out.close();
-				if(in != null) in.close();
+				if(out != null)
+					out.close();
+				if(in != null)
+					in.close();
 			} catch (Exception e) {
-				System.out.println("ÁßÃ¸ try-catch¹®À¸·Î finally ¾ÈÀÇ ¿¹¿Ü¸¦ Ã³¸®Çß¾î¿ä.");
+				System.out.println("ì¤‘ì²© try -catchë¬¸ì„ ì‚¬ìš©í•´ì„œ ì˜ˆì™¸ë¥¼ ì²˜ë¦¬í–ˆì–´ìš”.");
 			}
 		}
 	}

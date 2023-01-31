@@ -1,27 +1,40 @@
 package test01_byte_stream;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Test2 {
 	public static void main(String[] args) throws IOException {
+		// byte stream
+		// => ì´ë¯¸ì§€
+		
 
 		
-	//try with resource
-	//try ´ÙÀ½¿¡ (), () ¾È¿¡ ÇÊ¿äÇÑ ¸®¼Ò½º¸¦ Á¤ÀÇ
-	//¾Ë¾Æ¼­ closeÇØÁÜ
+		// ì—¬ê¸°ì„œëŠ” ì˜ˆì™¸ ì²˜ë¦¬ëŠ” ë”°ë¡œ í•˜ì§€ x
+		// try with resource
+		// try ë‹¤ìŒì— (), ()ì•ˆì— í•„ìš”í•œ ë¦¬ì†ŒìŠ¤ë¥¼ ì •ì˜
+		// ë¬¸ì¥ì€ ; êµ¬ë¶„
+		// closeë¥¼ ë”°ë¡œí•  í•„ìš”ì—†ì´ ì•Œì•„ì„œ closeí•´ì¤Œ!
+		
 		try (FileInputStream in = new FileInputStream("newjeans.jpg");
-			 FileOutputStream out = new FileOutputStream("newjeans-copy2.jpg");){
+			FileOutputStream out = new FileOutputStream("newjeans-copy2.jpg")){
 			
-			int b; // byte -> int·Î ÀúÀåÇØµµ µÊ (¹¬½ÃÀû Çü º¯È¯)
+			int b; // byteë¥¼ intí˜•ìœ¼ë¡œ ì €ì¥í•´ë„ ë¨
+			
 			while((b = in.read()) != -1) {
-				//´õÀÌ»ó ÀĞ¾î¿Ã µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é ¹ÙÀÌÆ®°¡ -1À» ¸®ÅÏÇÑ´Ù.
-				//ÇÒ´çÇÑ ÈÄ ¹Ù·Î ºñ±³
 				out.write(b);
 			}
-			System.out.println("º¹»ç¸¦ ¿Ï·áÇß½À´Ï´Ù.");
-			System.out.println("¾Ë¾Æ¼­ ½ºÆ®¸²ÀÌ ´İÇô¿ä.");
+			System.out.println("ë³µì‚¬ë¥¼ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.");
+			System.out.println("ì•Œì•„ì„œ ìŠ¤íŠ¸ë¦¼ì„ ë‹«ì•„ì¤ë‹ˆë‹¤.");
 		} 
 	}
 }
+
+
+
+
+
+
+

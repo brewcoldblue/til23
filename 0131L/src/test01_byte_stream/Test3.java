@@ -1,33 +1,47 @@
 package test01_byte_stream;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
 public class Test3 {
 	public static void main(String[] args) throws IOException {
+		// byte stream
+		// => ì´ë¯¸ì§€
+		
 
 		
-		//try with resource
-		//try ´ÙÀ½¿¡ (), () ¾È¿¡ ÇÊ¿äÇÑ ¸®¼Ò½º¸¦ Á¤ÀÇ
-		//¾Ë¾Æ¼­ closeÇØÁÜ
-			try (FileInputStream in = new FileInputStream("newjeans.jpg");
-				 FileOutputStream out = new FileOutputStream("newjeans-copy3.jpg");){
-				
-				byte[]buffer = new byte[10];
-				int read; //byte¸¦ intÇüÀ¸·Î ÀúÀåÇÔ
-				while((read = in.read(buffer)) != -1) {
-					//¸Å¹ø in.read ÇÒ ¶§¸¶´Ù 
-					//¹öÆÛ¿¡´Ù°¡ °ªÀ» ÇÏ³ª¾¿ Áı¾î³Ö´Â´Ù
-					//°á°úÀûÀ¸·Î read´Â ¾îµğ±îÁö ÀĞÀ¸¸é µÇ´ÂÁö¸¦ ÀúÀåÇÑ´Ù.
-					//´õ ÀÌ»ó ÀĞÀ» °ÍÀÌ ¾øÀ¸¸é -1.
-					out.write(buffer, 0, read);
-					System.out.println(Arrays.toString(buffer)+", "+read);
-					//¹öÆÛµé¿¡ À½¼ö°¡ ÀÖ´Â ÀÌÀ¯´Â ÀÚ¹ÙÀÇ Æ¯¼º ¶§¹®ÀÓ. ¿ø·¡´Â 0-255¸¦ ¾²´Âµ¥ ÀÚ¹Ù´Â -128-128ÀÌ¶ó¼­...
-				}
-				System.out.println("º¹»ç¸¦ ¿Ï·áÇß½À´Ï´Ù.");
-				System.out.println("¾Ë¾Æ¼­ ½ºÆ®¸²ÀÌ ´İÇô¿ä.");
-			} 
-		}
+		// ì—¬ê¸°ì„œëŠ” ì˜ˆì™¸ ì²˜ë¦¬ëŠ” ë”°ë¡œ í•˜ì§€ x
+		// try with resource
+		// try ë‹¤ìŒì— (), ()ì•ˆì— í•„ìš”í•œ ë¦¬ì†ŒìŠ¤ë¥¼ ì •ì˜
+		// ë¬¸ì¥ì€ ; êµ¬ë¶„
+		// closeë¥¼ ë”°ë¡œí•  í•„ìš”ì—†ì´ ì•Œì•„ì„œ closeí•´ì¤Œ!
+		
+		try (FileInputStream in = new FileInputStream("newjeans.jpg");
+			FileOutputStream out = new FileOutputStream("newjeans-copy3.jpg")){
+			
+			// ë²„í¼ë¥¼ ì‚¬ìš©í•˜ê¸°
+			byte[] buffer = new byte[10];
+			int read; // byteë¥¼ intí˜•ìœ¼ë¡œ ì €ì¥í•´ë„ ë¨
+			
+			while((read = in.read(buffer)) != -1) {
+				// ë§¤ë²ˆ in.read(buffer)í•  ë•Œë§ˆë‹¤ bufferì— ë°”ì´íŠ¸ë¥¼ ì±„ì›Œì¤Œ.
+				// read : ì–´ë””ê¹Œì§€ê°€ ì½ìœ¼ë©´ ë˜ëŠ”ì§€
+				out.write(buffer, 0, read);
+				System.out.println(Arrays.toString(buffer)+", "+read);
+ 				
+			}
+			System.out.println("ë³µì‚¬ë¥¼ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.");
+			System.out.println("ì•Œì•„ì„œ ìŠ¤íŠ¸ë¦¼ì„ ë‹«ì•„ì¤ë‹ˆë‹¤.");
+		} 
+	}
 }
+
+
+
+
+
+
+
