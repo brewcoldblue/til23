@@ -1,38 +1,20 @@
 package sandbox;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+
+import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String str = sc.nextLine();
-		String[] arr = str.toUpperCase().split("");
+		int N = sc.nextInt();
 		
-		Map<String, Integer> map = new HashMap<>();
+		long[] fib = new long[N+1];
+		fib[0] = 0;
+		fib[1] = 1;
 		
-		for(int i=0; i<arr.length; i++) {
-			
-			if(map.containsKey(arr[i])) {
-				map.put(arr[i], map.get(arr[i]) + 1);
-			} else map.put(arr[i], 1);
-		}
-		Iterator<String> e = map.keySet().iterator();
-
-		String answer = null;
-		int memo = 0;
-		for (String key : map.keySet()) {
-			if (map.get(key) > memo) {
-				answer = key;
-				memo = map.get(key);
-			}
-			else if (map.get(key) == memo) {
-				answer = "?";
-			}
-			else continue;
+		for (int i=2; i<N+1; i++) {
+			fib[i] = fib[i-1]+fib[i-2];
 		}
 		
-		System.out.println(answer);
-		
+		System.out.println("문제의 정답");
 	}
 }
