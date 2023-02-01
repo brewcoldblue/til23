@@ -1,4 +1,4 @@
-package sandbox;
+package a1003;
 
 import java.util.Scanner;
 public class Main {
@@ -14,7 +14,7 @@ public class Main {
 			System.out.println(zeros+" "+ones);
 			zeros = 0;
 			ones = 0;
-		}
+		} //아 이건 또 왜 초과
 	}
 	public static int fibonacci(int n) {
 	    if (n == 0) {
