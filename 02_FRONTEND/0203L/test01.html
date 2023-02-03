@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var str1 = "문자열1";
+      var str2 = "문자열2";
+      var str3 = `문자열3`;
+
+      var p1 = {
+        name: "ㅋㅋ",
+        age: 24,
+        hungory: false,
+        mbti: null,
+      };
+      var strj = JSON.stringify(p1);
+      console.log(strj);
+      var p2 = JSON.parse(strj);
+    </script>
+  </body>
+</html>

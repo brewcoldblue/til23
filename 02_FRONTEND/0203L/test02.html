@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //JS 배열 -> JSON
+      var arr1 = [
+        { name: "Lee", age: 20 },
+        { name: "Yang", age: 20 },
+        { name: "Park", age: 20 },
+        { name: "Oh", age: 20 },
+        { name: "Hong", age: 20 },
+        { name: "Jung", age: 20 },
+      ];
+      var str = JSON.stringify(arr1);
+      console.log(arr1);
+      console.log("----------------------------");
+      console.log(str);
+      var arr2 = JSON.parse(str);
+      console.log(arr2);
+    </script>
+  </body>
+</html>
