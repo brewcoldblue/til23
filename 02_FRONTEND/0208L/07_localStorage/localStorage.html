@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로컬 스토리지 실습</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <button id="create">등록</button>
+    <button id="read">조회</button>
+    <button id="delete">삭제</button>
+    <div id="display">
+      <!-- 여기에 로컬스토리지에 저장된 값을 보여줍니다. -->
+    </div>
+    <script>
+      const input = document.querySelector("#input");
+      const createBtn = document.querySelector("#create");
+      const readBtn = document.querySelector("#read");
+      const deleteBtn = document.querySelector("#delete");
+      const display = document.querySelector("#display");
+
+      createBtn.addEventListener("click", () => {
+        let jsonStr = JSON.stringify(input.value);
+        localStorage.setItem("data", jsonStr);
+        display.innerText = "등록되었어요";
+        input.value = "";
+      });
+
+      readBtn.addEventListener("click", () => {
+        if (localStorage.getItem("data") === null)
+          display.innerText = "해당하는 key에 따른 값이 없엉";
+        else display.innerText = JSON.parse(localStorage?.getItem("data"));
+      });
+
+      deleteBtn.addEventListener("click", () => {
+        localStorage.removeItem("data");
+        display.innerText = "삭제되었지롱";
+      });
+    </script>
+  </body>
+</html>
