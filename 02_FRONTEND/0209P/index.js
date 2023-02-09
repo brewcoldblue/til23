@@ -82,6 +82,7 @@ const main = () => {
     }
   };
   xhr.open("get", "./data/movie.json");
+  xhr.setRequestHeader("Content-Type", "application/text");
   xhr.send();
 };
 
