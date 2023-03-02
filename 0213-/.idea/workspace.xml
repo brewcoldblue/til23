@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c66272cb-6661-4bdc-abb2-4cc5832bad11" name="Changes" comment="" />
+    <list default="true" id="c66272cb-6661-4bdc-abb2-4cc5832bad11" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../0213/L0302/src/s2930/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../algorithm/src/etc/b1158/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../algorithm/out/production/algorithm/etc/b1244/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../algorithm/out/production/algorithm/etc/b1244/Main.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,15 +20,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/SSAFY/Desktop/GIT/TIL23/0213-0227",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SSAFY/Desktop/GIT/TIL23/0213-&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -35,6 +40,8 @@
       <workItem from="1677120879939" duration="86000" />
       <workItem from="1677205639364" duration="13000" />
       <workItem from="1677465275677" duration="45000" />
+      <workItem from="1677718866888" duration="57000" />
+      <workItem from="1677725101468" duration="284000" />
     </task>
     <servers />
   </component>
