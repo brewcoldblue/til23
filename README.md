@@ -1,7 +1,15 @@
-# Package Structure
+# TIL23
 
-- `/algophago` : 알고파고 스터디 문제에 대한 풀이
-- `/algorhithm` : 알고리즘 문제풀이 (개인)
-- `/*/aXXXX` : 백준 알고리즘 XXXX번 문제에 대한 풀이
-- `/*/sXXXX` : SWEA XXXX번 문제에 대한 풀이
-- `/sandbox/src` : whiteboard
+- 0112-0203 JAVA
+
+- 0201-0210 HTML, CSS, JS
+
+- 0213-0306 Algorithm
+
+- 0307-0310 Servlet, JSP
+
+- 0313-0317 DB
+
+- 0320-0410 Algorithm 2
+
+  
