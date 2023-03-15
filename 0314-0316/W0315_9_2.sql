@@ -1,0 +1,16 @@
+CREATE DATABASE ssafy9_2;
+USE ssafy9_2;
+
+CREATE TABLE IF NOT EXISTS movie (
+	`등록번호` INT NOT NULL,
+    `감독` VARCHAR(20) NOT NULL,
+    `장르` VARCHAR(20) NOT NULL,
+    `상영시간` INT NOT NULL,
+    `개봉일` DATE NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS review (
+	`닉네임` VARCHAR(20) NOT NULL PRIMARY KEY,
+    `점수` INT NOT NULL,
+    `한줄평` VARCHAR(100) NOT NULL
+);
