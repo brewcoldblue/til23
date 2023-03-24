@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class s2806 {
 	static int[][] board;
+	static boolean [][] checker;
 	static int count;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -11,15 +12,23 @@ public class s2806 {
 		for(int tc=1; tc<=T; tc++) {
 			int N = sc.nextInt();
 			
-			//일차원 배열의 열 값에 행 좌표를 저장해 이차원 배열을 표현합니다.
 			board = new int[N][N];
-			checkQueen(0);
-		
-			
+			checker = new boolean[N][N];
+			checkQueen(0,0);			
 		}
 	}
-	public static boolean checkQueen(int cur) {		
+	public static boolean checkQueen(int row, int col) {		
+		//base case
+		if("ㅎㅎㅎㅎㅎ") return false;
 		
+		
+		for(int i=0; i<board.length; i++) {
+		
+			if(checker[row][col]) continue;
+				
+			checkQueen(row+1, col);
+			setAttackRange(row+1, col);
+		}
 //		if(다음 행에 0이 없으면) return false;
 //
 //		그렇지 않으면 다음 행에 놓을 수 있는지 판단
@@ -27,5 +36,20 @@ public class s2806 {
 		
 		count++;
 		return true;
+	}
+	
+	private static void setAttackRange(int row, int col) {
+		
+		for(int i=0; i<board.length; i++) {
+			if (row+i < board.length) checker[row+i][col] = true;
+			if (row-i >= 0) checker[row-i][col] = true;
+			if (col+i < board.length) checker[row][col+i] = true;
+			if (col-i >= 0) checker[row][col-i] = true;
+			if (row+i < board.length && col+i < board.length) checker[row+i][col+i] = true;
+			if (row-i >= 0 && col-i >= 0) checker[row-i][col-i] = true;
+			if (row+i < board.length && col-i >= 0) checker[row+i][col-i] = true;
+			if (row-i >= 0 && col+i < board.length) checker[row-i][col+i] = true;
+		}
+		
 	}
 }
