@@ -49,10 +49,49 @@ public class Dijkstra_PQ {
 	}
 	
 	
-	private static void dijkstra(int start) {
+	private static void dijkstra(int start, int end) {
 		//prim과 유사할 것이지만 pick할 때 addAll을 하는 게 아니고?
 		//갱신한 값을 만들어서 새로운 Node를 넣어야함
-		//
+		boolean[] visited = new boolean[V];
+		PriorityQueue<Node> pq = new PriorityQueue<>();
+		
+//		pq.addAll(adjList[start]);
+		pq.add(new Node(start, 0));
+		dist[start] = 0;
+		
+		int pick = 1;
+		int answer = 0;
+		
+		while(pick != end) {
+			Node n = pq.poll();
+			if(visited(n.v)) continue;
+			
+			visited[n.v]= true;
+			
+			for (Node cur : adjList[n.v]) {
+				if (visited[cur.v]) continue;
+				if (distance[cur.v] > distance[n.v] + cur.w) {
+					distance[cur.v] = distance[n.v] + cur.w;
+					pq.offer(new Node(cur.v, distance[cur.v]));
+				}
+			}
+			
+//			FOR(){
+//			dist[다음노드까지의 거리] = Math.min(dist[다음노드까지의 한큐에 가는거리],dist[n.v] + adjList[n.v]??? 어떻게 들고와야 다음 node weight이 나오지;;)
+//			pq.offer(new Node(k, dist[다음노드까지의 거리]));
+//			}
+			
+					
+					// 시작에서 K까지  > 현재 dist =   + (n에서 K까지 weight)
+			// 시작에서 K까지 = 현재 dist = n.w + (n에서 K까지 weight)
+			// pq.offer(new Node (k, 시작에서K까지))
+			
+			//c는 b, e로 갈수 있음
+			//
+			
+			
+			pick++;
+		}
 	}
 
 	static String input = "6 11\r\n" + "0 1 4\r\n" + "0 2 2\r\n" + "0 5 25\r\n" + "1 3 8\r\n" + "1 4 7\r\n"
