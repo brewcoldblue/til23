@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean class="di.Desktop" id="desktop"></bean>
+	<!-- 생성자 주입: container가 빌드되면서 데스크탑을 먼저 만들어서  프로그래머에 조립시켜 놓음 -->
+	<!-- 의존성 주입 시 순서 상관없음 -->
+	<!-- <bean class="di.Programmer" id="programmer">
+		<constructor-arg ref="desktop"></constructor-arg> -->
+	<!-- </bean> -->
+	<bean class="di.Laptop" id="laptop"></bean>
+	<bean class="di.Programmer" id="programmer">
+	<property name="computer" ref="laptop"></property>
+		<!-- 생성자 주입: container가 빌드되면서 데스크탑을 먼저 만들어서  프로그래머에 조립시켜 놓음 -->
+		<!-- 의존성 주입 시 순서 상관없음 -->
+	</bean>
+	
+</beans>
