@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+
+	
+	<!-- SQL 무슨 factory 등록해야함, 필수속성 dataSource -->
+	<!-- dbcp 안 쓸거면 jdbc 임포트해도 댐이다 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<!-- name에 url,driver같은 것들을 쓸 수 있는 이유는 내부적으로 setXXX라는 setter가 있어서임 -->
+		<property name="url" value="jdbc:mysql://localhost:3306/ssafy_board?serverTimezone=UTC" />
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="username" value="ssafy" />
+		<property name="password" value="ssafy" />
+	</bean>
+	<!-- 마이바티스 사용하기 위한 sqlsessionfactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- mapper 위치 등록. 이때 java 단을 classpath*라고 함-->
+		<property name="mapperLocations" value="classpath*:mappers/*.xml" />
+		<!-- 편하게 쓰기 위해 typeAliases 등록, 패키지 안에 있는거 다 등록 -->
+		<property name="typeAliasesPackage" value="com.ssafy.board.model.dto" />
+	</bean>
+	
+	<!-- mapperscan을 위해 mybatis-spring을 namespace에서 추가 -->
+	<!-- dao interface를 지정, 여기서 getmapper를 해서 구현체 만들수 있게 됨 -->
+	<mybatis-spring:scan base-package="com.ssafy.board.model.dao" />
+	
+	<!-- 이건 왜 servletcontext가 아니고 여기다 해? -->
+	<context:component-scan base-package="com.ssafy.board.model.service" />
+</beans>

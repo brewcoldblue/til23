@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.board.model.dao.BoardDao">
+
+<resultMap type="Board" id="boardMap">
+	<result column="id" property="id" />
+	<result column="title" property="title" />
+	<result column="content" property="content" />
+	<result column="writer" property="writer" />
+	<result column="view_cnt" property="viewCnt" />
+	<result column="reg_date" property="regDate" />
+</resultMap>
+
+<!-- select id="selectAll" resultType="Board" -->
+<select id="selectAll" resultMap="boardMap">
+	<!-- SELECT id, content, title, writer, view_cnt as viewCnt, date_format(reg_date, '%Y-%M-%d') as regDate -->
+	SELECT id, content, title, writer, view_cnt, date_format(reg_date, '%Y-%M-%d') as reg_date
+	FROM Board;
+</select>
+<!--  select id="selectOne" parameterType="int" resultType="Board" -->
+<select id="selectOne" parameterType="int" resultMap="boardMap">
+	SELECT id, content, writer, title, view_cnt as view_cnt, reg_date
+	FROM Board
+	Where id = #{id};
+</select>
+
+<!-- 생성해서 만들어진 key를 board에 알아서 넣어서 리턴해준다... 그래야 이걸로 글 쓰고 리다이렉트시킬수 있음 -->
+<insert id="insertBoard" parameterType="Board" keyProperty="id" useGeneratedKeys="true">
+	INSERT INTO board(title, writer, content)
+	VALUES (#{title}, #{writer}, #{content});
+</insert>
+
+<delete id="deleteBoard" parameterType="int">
+	DELETE FROM board WHERE id = #{id};
+</delete>
+
+<update id="updateViewCnt" parameterType="int">
+	UPDATE board
+	SET view_cnt = ciew_cnt + 1
+	WHERE id = #{id};
+</update>
+
+<select id="search" resultType="Board" parameterType="SearchCondition">
+<!-- 저거 원래 풀패키지명 써야되는데 될듯? rootcontext.xml에 가보면 <property name="typeAliasesPackage"...> 보면 dto 전부다 등록해놔서 -->
+	SELECT id, content, title, writer, view_cnt, date_format(reg_date,'%Y-%M-%d') as reg_date
+	FROM Board
+		<!-- 1. 어떤 기준으로 검색할것? -->
+		<!-- ${} 는 변수 그대로, #{}는 알아서 문자열 형태로 붙는다. ${}는 위험,, SQL INJECTION -->
+	<if test="key != 'none'">WHERE ${key} LIKE concat('%', #{word}, '%')</if>
+		<!-- 1. 어떤 기준 + 어떤 방향으로 검색할것? -->
+	<if test="orderBy != 'none'">ORDER BY ${orderBy} ${orderByDir}</if>
+</select>
+</mapper>

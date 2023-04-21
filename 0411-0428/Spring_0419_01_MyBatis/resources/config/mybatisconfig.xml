@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 여기서 property 들고오세요 -->
+  <properties resource="config/db.properties" />
+  <!-- 배포용인지 라이브인지 같은 것들을 설정할 수 있음 -->
+  
+  <typeAliases>
+  	<typeAlias type="com.ssafy.board.dto.Board" alias="Board" />
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+      <!-- 직접 작성해도 좋고, 설정 읽어와서 써도 좋다. -->
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+  <!-- 실제로 SQL을 작성하는 곳 -->
+    <mapper resource="mapper/boardMapper.xml"/>
+  </mappers>
+</configuration>
