@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- name space는 UserRepo의 fully qualified name으로 설정한다. -->
+<mapper namespace="com.ssafy.model.dao.BoardDao">
+
+	<!-- 사용자 등록 -->
+	<insert id="write" parameterType="Board" useGeneratedKeys="true">
+	
+	INSERT INTO users
+	VALUES(#{id},#{title},#{author},#{content},#{date},#{clicks},#{likes})
+	
+	</insert>
+	
+		<!-- 글쓴이로 검색했을 때 -->
+	<select id="searchByAuthor" parameterType="String" resultType="Board">
+	SELECT * FROM users
+	WHERE author = #{author}
+	</select>
+	
+		<!-- 키워드로 검색했을 때 -->
+	<select id="searchByKeyword" parameterType="String" resultType="Board" >
+		SELECT * FROM users
+		WHERE title like CONCAT('%',#{id},'%')
+	</select>
+</mapper>
