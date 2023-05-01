@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <h2>{{msg}}</h2>
+      <p>{{count}}</p>
+    </div>
+    <script>
+      //vue instance 객체
+      /**
+       * el: vue 객체를 mount할 HTML Element (CSS선택자 혹은, dom 컨트롤로 가져와서 선택)
+       * data: 들어갈 데이터 - 컴포넌트 이용 시 무조건 만들어야 함
+       */
+      //1. 객체 형태로 만들기
+      // const app = new Vue({
+      //   el: "#app",
+      //   data: {
+      //     msg: "hello ssafy!",
+      //   },
+      // });
+
+      //2. 함수 형태로 만들기 (ES6+)
+      // const app = new Vue({
+      //   el: "#app",
+      //   data() {
+      //     return {
+      //       msg: "hello ssafy fn",
+      //     };
+      //   },
+      // });
+
+      //3. 메서드 추가
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "count 실험",
+            count: 1,
+          };
+        },
+        methods: {
+          plus() {
+            this.count++; //this가 app, 즉 new vue instance 의미
+            console.log(this);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
