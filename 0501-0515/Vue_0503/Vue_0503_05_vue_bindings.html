@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      div {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      .dark {
+        background-color: black;
+        color: white;
+      }
+      fieldset {
+        margin: 1rem;
+        padding: 1rem;
+      }
+      legend {
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- vue part: mount된 것의 outerHTML -->
+    <div id="app">
+      <!--ref/ $refs-->
+      <h3>ref/$refs</h3>
+
+      <input type="text" v-model="name" placeholder="이름 써라" ref="apple" />
+      <button @click="send">전송</button>
+      <hr />
+      <h3>클래스 바인딩</h3>
+      <div v-bind:class="myClasses">ㅋㅋㅋㅋ</div>
+      <div v-bind:class="classObject">ㅋㅋㅋㅋ</div>
+      <hr />
+      <h3>form binding</h3>
+      <fieldset>
+        <legend>바인딩할때 보간 쓰지 마세요 특히 textarea</legend>
+        <!--여기서 보간 쓰지마셈 양방향 바인딩이 아닙니다.-->
+        <textarea v-model.lazy="ta"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>체크박스</legend>
+        <labe for="mailcheck">야 이메일 동의해라</labe>
+        <input
+          id="mailcheck"
+          type="checkbox"
+          v-model="email"
+          true-value="Y"
+          false-value="N"
+        />
+
+        <div>{{email}}</div>
+      </fieldset>
+      <fieldset>
+        <legend>라디오 버튼</legend>
+        <label for="seoul">서울</label>
+        <input type="radio" id="seoul" v-model="campus" value="seoul" />
+        <label for="tj">대전</label>
+        <input type="radio" id="tj" v-model="campus" value="tj" />
+
+        <div>{{campus}}</div>
+      </fieldset>
+      <fieldset>
+        <legend>select box</legend>
+        <select v-model="selected">
+          <!--v-model 쓰는 순간, options에 있는 selected 안됩니다-->
+          <option value="" disabled>골라라</option>
+          <option value="seoul">으잉?</option>
+          <option value="tj">에엥?</option>
+          <option value="buk">앵ㅇ?</option>
+        </select>
+
+        <div>{{selected}}</div>
+      </fieldset>
+
+      <fieldset>
+        <legend>select box - multiple</legend>
+        <select v-model="selected2" multiple>
+          <!--v-model 쓰는 순간, options에 있는 selected 안됩니다-->
+          <option value="" disabled>골라라</option>
+          <option value="seoul">으잉?</option>
+          <option value="tj">에엥?</option>
+          <option value="buk">앵ㅇ?</option>
+        </select>
+        <div>{{selected2}}</div>
+      </fieldset>
+
+      <fieldset>
+        <legend>select box - multiple 2</legend>
+        <select v-model="selected4" multiple>
+          <!--v-model 쓰는 순간, options에 있는 selected 안됩니다-->
+          <option v-for="i in selected3" :value="i.value">{{i.name}}</option>
+        </select>
+        <div>{{selected4}}</div>
+      </fieldset>
+    </div>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            name: "", //input bind
+            myClasses: { dark: true }, //class bind
+            dark: true,
+            light: false,
+            ta: "", //form bind
+            email: false,
+            campus: "",
+            selected: "골라라",
+            selected2: [],
+            selected3: [
+              { name: "엥", value: "seoul" },
+              { name: "으엥", value: "tj" },
+              { name: "에엥", value: "puk" },
+            ],
+            selected4: [],
+          };
+        },
+        methods: {
+          send() {
+            console.log(this.$refs.apple);
+            alert(this.name); //양방향 바인딩!
+          },
+        },
+        computed: {
+          //이런 식으로 조건부 스타일링이 가능합니다
+          classObject: function () {
+            return {
+              dark: this.dark && !this.light,
+            };
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

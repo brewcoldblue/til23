@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <!-- 보간법, 이 안에는 모든 표현식 들어갈 수 있음 -->
+      <h2>
+        <p>{{msg}}</p>
+      </h2>
+    </div>
+    <!-- <div id="app2">
+      <h2>{{msg2}}</h2>
+    </div> -->
+    <script>
+      //vue instance
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "안녕하세요 ㅎㅎ",
+            count: 1,
+          };
+        },
+      });
+
+      // 인스턴스 여러 개여도 문제없음
+      // const app2 = new Vue({
+      //   el: "#app2",
+      //   data() {
+      //     return {
+      //       msg2: "안녕하세요 히히히",
+      //       count: 1,
+      //     };
+      //   },
+      // });
+    </script>
+  </body>
+</html>

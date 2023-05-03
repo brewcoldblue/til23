@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <h2>숫자를 돌려보자</h2>
+      <span v-for="i in 10">{{i}} </span>
+      <h2>이름도 돌려보자</h2>
+      <ul>
+        <li v-for="(name, idx) in names">{{idx}} - {{name}}</li>
+      </ul>
+      <h2>객체 배열을 돌려보자</h2>
+      <ul>
+        <li v-for="human in humans">{{human.name}}, {{human.age}}세</li>
+      </ul>
+    </div>
+
+    <script>
+      //vue instance
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            names: ["전혜련", "채현종", "한상빈"],
+            humans: [
+              {
+                name: "이창주",
+                age: 29,
+              },
+              {
+                name: "민병기",
+                age: "26?",
+              },
+              {
+                name: "정민영",
+                age: 28,
+              },
+            ],
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

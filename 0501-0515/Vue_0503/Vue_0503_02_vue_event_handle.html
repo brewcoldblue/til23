@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part: mount된 것의 outerHTML -->
+    <div id="app">
+      <h2>
+        <p>{{count}}</p>
+        <button @click="greet()">푝</button>
+        <!--button @click="greet("엥?", $event)">푝</button 3. 이렇게도 됨-->
+      </h2>
+    </div>
+    <!-- <div id="app2">
+      <h2>{{msg2}}</h2>
+    </div> -->
+    <script>
+      //vue instance
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "안녕하세요 ㅎㅎ",
+            count: 1,
+          };
+        },
+        methods: {
+          greet(param, e = $event) {
+            //2. $event를 추가하면 됨이다.
+            alert(`${this.name}님 안녕!`);
+            // console.log(event.target.innerText);
+            //1. 넘기지 않아도 event라는 이름으로 이벤트 객체가 들어온다. 만약 좀더 명확히 넘기려면
+            console.log(e);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

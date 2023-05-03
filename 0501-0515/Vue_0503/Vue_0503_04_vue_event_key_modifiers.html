@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part: mount된 것의 outerHTML -->
+    <div id="app">
+      <input type="text" v-model="name" placeholder="이름 써라" />
+      <button @click="send">전송</button>
+
+      <input
+        type="text"
+        v-model="name"
+        @keyup.13="send"
+        placeholder="이름 써라2"
+      />
+      <button @click="send">전송</button>
+    </div>
+    <!-- <div id="app2">
+      <h2>{{msg2}}</h2>
+    </div> -->
+    <script>
+      //vue instance
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "안녕하세요 ㅎㅎ",
+            count: 1,
+            name: "",
+          };
+        },
+        methods: {
+          send() {
+            alert(this.name); //양방향 바인딩!
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

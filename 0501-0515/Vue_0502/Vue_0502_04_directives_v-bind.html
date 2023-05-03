@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <!-- v-bind 사용시 return에 해당하는 key로 들어감 -->
+      <div v-bind:id="idValue">v-bind 연습</div>
+      <!-- 줄여 쓸 수도 있음 -->
+      <div :id="idValue">v-bind 연습</div>
+
+      <!-- 아래처럼 attribute 자체를 바꿀 수도 있음-->
+      <button v-bind:[key]="btnId">버튼버튼</button>
+      <button :[key]="btnId">버튼버튼</button>
+    </div>
+
+    <script>
+      //vue instance
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            idValue: "test-id",
+            key: "class",
+            btnId: "test-btn",
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

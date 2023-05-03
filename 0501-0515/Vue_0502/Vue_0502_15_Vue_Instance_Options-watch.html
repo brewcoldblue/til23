@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <div>
+        <input type="text" v-model="msg" />
+      </div>
+      <!-- 3번씩 호출됨 -->
+      <p>원본: {{msg}}</p>
+      <p>역순: {{reversedMsg}}</p>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "",
+            regersedMsg: "",
+          };
+        },
+        watch: {
+          //msg를 보고 있다가 newVal이 들어오면 reversedMsg를 새로 변경
+          msg(newVal) {
+            this.reversedMsg = newVal.split("").reverse().join("");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

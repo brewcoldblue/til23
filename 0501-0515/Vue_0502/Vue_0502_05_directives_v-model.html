@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <!-- CJK 이슈 있음. 이벤트 쓰든가 뭐... 해야함 -->
+      <input type="text" v-model.lazy="msg" />
+      <div>{{msg}}</div>
+    </div>
+
+    <script>
+      //vue instance
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "",
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
