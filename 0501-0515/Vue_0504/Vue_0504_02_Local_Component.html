@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <local-component></local-component>
+      <local2></local2>
+    </div>
+    <script>
+      // Vue.component("global-component", {
+      //   template: `<h2>전역 컴포넌트다!</h2>`, //이 안에 들어가는 html이...
+      // });
+
+      const Child = {
+        template: "<h3>지역 컴포넌트임</h3>",
+        //얘는 밑에서 등록되었으니까 #app에 마운트된 인스턴스 안에서만 사용이 가능하다
+      };
+
+      const App = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "count 실험",
+            count: 1,
+          };
+        },
+        methods: {
+          plus() {
+            this.count++; //this가 app, 즉 new vue instance 의미
+            console.log(this);
+          },
+        },
+        components: {
+          "local-component": Child, //변수 선언한 걸 가져오든지
+          local2: {
+            template: "<h3>직접 입력해도 됩니다</h3>", //직접 입력도 가능함
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

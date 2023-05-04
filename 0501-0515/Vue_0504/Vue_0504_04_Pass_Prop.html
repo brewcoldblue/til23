@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <h2>부모 컴포넌트 (DIV)</h2>
+      <!-- <child propsdata="정적인 메시지를 내려봅시다"></child> -->
+
+      <!-- 동적인 prop을 살펴봅시다.-->
+      <input type="text" v-model="inp" />
+
+      <!-- **부모 컴포넌트**의 data와 단방향 바인딩합니다. -->
+      <!-- 이때 props는 케밥 케이스로 써야 작동합니다. -->
+      <!--정적 prop, 동적 prop을 동시에 내려봅니다-->
+      <child v-for="area in areas" :area2="area" :msg="msg[parseInt(Math.random()*3)]"></child>
+      <child :inp2="inp"></child>
+    </div>
+
+    <!-- 템플릿은 vue instance가 마운트한 엘리먼트 바깥에! -->
+    <template id="child">
+      <div>
+        <h3>자식 컴포넌트</h3>
+        <!-- 정적 PROPS -->
+        <!-- <span>{{propsdata}}</span> -->
+        <!-- 동적 PROPS-->
+        <span>{{area2}}</span>
+        <span>{{msg}}</span>
+        <span>{{inp2}}</span>
+      </div>
+    </template>
+
+    <script>
+      Vue.component("child", {
+        template: "#child",
+        // props: ["propsdata"], //정적인 데이터는 이렇게 받아용
+        props: ["area2", "msg", "inp2"],
+      });
+
+      const App = new Vue({
+        el: "#app",
+        data() {
+          return {
+            areas: ["속초", "부산", "수원"],
+            msg: ["순대 먹으러 감", "여행감", "예비군 감"],
+            inp: "",
+            cnt: 0,
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

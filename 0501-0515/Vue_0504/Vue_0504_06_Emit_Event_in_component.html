@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!--총투표수-->
+      <!--코딩, 알고리즘 중 하나를 선택한다고 보자-->
+      <!-- 어떤 걸 data로 두고 어떤 걸 props로 둘지는 설계문제 -->
+      <h1>총 투표수는 {{total}}</h1>
+      <!--addcount가 발생하면 부모 컴포넌트의 addTotalCount가 작동합니다-->
+      <child-view @add-count="addTotalCount" v-for="(item, idx) in titles" :title="item" />
+    </div>
+
+    <template id="child-view">
+      <div>
+        <h2>{{title}} 의 득표수는 {{count}}</h2>
+        <button @click="addCount">투표하기</button>
+      </div>
+    </template>
+
+    <script>
+      //vue instance 객체
+      Vue.component("child-view", {
+        template: "#child-view",
+        props: ["title"],
+        data() {
+          return {
+            count: 0,
+          };
+        },
+        methods: {
+          addCount() {
+            this.count++;
+            //부모 컴포넌트에 add-count event가 발생했다고 알려줍니다
+            this.$emit("add-count");
+          },
+        },
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            total: 0, //total 집계부분은 부모에 들어갑니다
+            titles: ["코딩", "알고리즘"],
+            counts: [0, 0],
+          };
+        },
+        methods: {
+          addTotalCount() {
+            this.total += 1;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

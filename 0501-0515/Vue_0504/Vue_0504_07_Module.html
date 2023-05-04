@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <imported-components></imported-components>
+      <imported-components2></imported-components2>
+    </div>
+
+    <script>
+      //import importedComponent from 'path'
+      const app = new Vue({
+        el: "#app",
+        components: {
+          //importedComponent
+          //importedComponent2
+        },
+        data() {
+          return {
+            msg: "ㅎㅎ",
+            cnt: 0,
+          };
+        },
+        methods: {
+          addTotalCount() {
+            this.cnt += 1;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

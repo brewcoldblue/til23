@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <global-component></global-component>
+    </div>
+
+    <div id="app2">
+      <global-component></global-component>
+    </div>
+    <script>
+      //vue instance 객체
+      Vue.component("global-component", {
+        template: `<h2>전역 컴포넌트다!</h2>`, //이 안에 들어가는 html이...
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            msg: "count 실험",
+            count: 1,
+          };
+        },
+        methods: {
+          plus() {
+            this.count++; //this가 app, 즉 new vue instance 의미
+            console.log(this);
+          },
+        },
+      });
+
+      const app2 = new Vue({
+        el: "#app2",
+        data() {
+          return {
+            msg: "count 실험",
+            count: 1,
+          };
+        },
+        methods: {
+          plus() {
+            this.count++; //this가 app, 즉 new vue instance 의미
+            console.log(this);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue_Start</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- vue part -->
+    <div id="app">
+      <my-comp></my-comp>
+      <my-comp></my-comp>
+      <!--이렇게 같은 컴포넌트가 들어갔을 때
+      data가 객체로 리턴되고 있으면, 같은 데이터 참조값을 써서 문제생김
+      따라서 아래처럼 함수형태로 만들어서 새로운 데이터셋을 가지도록 해야함-->
+    </div>
+
+    <!-- 템플릿은 vue instance가 마운트한 엘리먼트 바깥에! -->
+    <template id="component">
+      <div>
+        <!--컴포넌트 안에는 최상위에 무언가를 감싸야함-->
+        <h2>{{msg}}</h2>
+        <h3>{{cnt}}</h3>
+        <button @click="cnt++">눌러봐</button>
+      </div>
+      <!-- 이거 에러남.
+      <div>얍</div>
+      -->
+    </template>
+
+    <script>
+      Vue.component("my-comp", {
+        template: "#component",
+        data() {
+          return {
+            msg: "component 안의 data- msg",
+            cnt: 0,
+          };
+        },
+        //위에 있는 <template>의 innerhtml.
+      });
+
+      const App = new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>
