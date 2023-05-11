@@ -37,7 +37,11 @@ public class s2806 {
 		count++;
 		return true;
 	}
-	
+
+// row[1,0,0,0,0]
+// col[0,1,0,0,0]
+// diag[0,0,0,0,0,0,0,0,0]
+
 	private static void setAttackRange(int row, int col) {
 		
 		for(int i=0; i<board.length; i++) {
